@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Anthropic from '@anthropic-ai/sdk';
 import './App.css';
 import { getPromptForFormat, type FormatType, type LocationType } from './prompts/main';
 
@@ -12,43 +13,25 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
-  const callOpenAI = async (prompt: string): Promise<string> => {
-    console.log('Calling OpenAI with prompt:', prompt);
-    const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-    
-    console.log('API Key exists:', !!apiKey);
-    console.log('API Key is placeholder:', apiKey === 'your_openai_api_key_here');
-    
-    if (!apiKey || apiKey === 'your_openai_api_key_here') {
-      throw new Error('Please set your OpenAI API key in the .env file');
+  const callClaude = async (prompt: string): Promise<string> => {
+    const apiKey = process.env.REACT_APP_ANTHROPIC_API_KEY;
+
+    if (!apiKey || apiKey === 'your_anthropic_api_key_here') {
+      throw new Error('Please set your Anthropic API key in the .env file (REACT_APP_ANTHROPIC_API_KEY)');
     }
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 2000
-      })
+    const client = new Anthropic({ apiKey });
+    const message = await client.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 2000,
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.7,
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`OpenAI API error: ${errorData.error?.message || 'Unknown error'}`);
-    }
-
-    const data = await response.json();
-    return data.choices[0]?.message?.content || 'No response from OpenAI';
+    const textBlock = message.content.find(
+      (block): block is Anthropic.TextBlock => block.type === 'text'
+    );
+    return textBlock?.text ?? 'No response from Claude';
   };
 
   const handleFormatSelect = (format: FormatType): void => {
@@ -82,12 +65,9 @@ const App: React.FC = () => {
     setError('');
     
     try {
-      console.log('Getting prompt for format:', format, 'and location:', selectedLocation);
       const prompt = getPromptForFormat(format, selectedLocation);
-      console.log('Generated concatenated prompt:', prompt);
       
-      const result = await callOpenAI(prompt);
-      console.log('OpenAI result:', result);
+      const result = await callClaude(prompt);
       
       setOutputData(result);
       setDataRetrieved(true);
@@ -219,7 +199,7 @@ const App: React.FC = () => {
             className="output-textbox"
             value={outputData}
             readOnly
-            placeholder={isLoading ? "Loading data from OpenAI..." : "Select a location, format and click 'Get Data' to see the formatted output..."}
+            placeholder={isLoading ? "Loading data from Claude..." : "Select a location, format and click 'Get Data' to see the formatted output..."}
           />
         </div>
       </main>
