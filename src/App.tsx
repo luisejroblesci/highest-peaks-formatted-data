@@ -3,28 +3,30 @@ import Anthropic from '@anthropic-ai/sdk';
 import './App.css';
 import { getPromptForFormat, type FormatType, type LocationType } from './prompts/main';
 
+type PromptMode = 'preset' | 'custom';
 type FormatTypeOrNull = FormatType | null;
 
 const App: React.FC = () => {
+  const [promptMode, setPromptMode] = useState<PromptMode>('preset');
   const [selectedFormat, setSelectedFormat] = useState<FormatTypeOrNull>(null);
   const [selectedLocation, setSelectedLocation] = useState<LocationType>('latinAmerica');
+  const [customPrompt, setCustomPrompt] = useState<string>('');
   const [outputData, setOutputData] = useState<string>('');
-  const [dataRetrieved, setDataRetrieved] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
-  const callClaude = async (prompt: string): Promise<string> => {
+  const callClaude = async (userPrompt: string): Promise<string> => {
     const apiKey = process.env.REACT_APP_ANTHROPIC_API_KEY;
 
     if (!apiKey || apiKey === 'your_anthropic_api_key_here') {
       throw new Error('Please set your Anthropic API key in the .env file (REACT_APP_ANTHROPIC_API_KEY)');
     }
 
-    const client = new Anthropic({ apiKey });
+    const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
     const message = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-haiku-4-5',
       max_tokens: 2000,
-      messages: [{ role: 'user', content: prompt }],
+      messages: [{ role: 'user', content: userPrompt }],
       temperature: 0.7,
     });
 
@@ -34,71 +36,54 @@ const App: React.FC = () => {
     return textBlock?.text ?? 'No response from Claude';
   };
 
-  const handleFormatSelect = (format: FormatType): void => {
-    console.log('Format selected:', format);
-    setSelectedFormat(format);
-    setDataRetrieved(false);
-    setOutputData('');
-    setError('');
-  };
+  const handleSubmit = async () => {
+    const prompt =
+      promptMode === 'custom'
+        ? customPrompt.trim()
+        : selectedFormat
+          ? getPromptForFormat(selectedFormat, selectedLocation)
+          : '';
 
-  const handleLocationSelect = (location: LocationType) => {
-    console.log('Location selected:', location);
-    setSelectedLocation(location);
-    setDataRetrieved(false);
-    setOutputData('');
-    setError('');
-  };
+    if (!prompt) return;
 
-  const handleGetData = async () => {
-    console.log('Get Data clicked!');
-    console.log('Selected format:', selectedFormat);
-    console.log('Selected location:', selectedLocation);
-    
-    if (!selectedFormat) {
-      console.log('No format selected, returning');
-      return;
-    }
-
-    const format = selectedFormat;
     setIsLoading(true);
     setError('');
-    
+    setOutputData('');
+
     try {
-      const prompt = getPromptForFormat(format, selectedLocation);
-      
       const result = await callClaude(prompt);
-      
       setOutputData(result);
-      setDataRetrieved(true);
     } catch (err) {
-      console.error('Error in handleGetData:', err);
       setError(err instanceof Error ? err.message : 'An error occurred');
-      setDataRetrieved(false);
     } finally {
       setIsLoading(false);
     }
   };
 
+  const canSubmit =
+    promptMode === 'custom'
+      ? customPrompt.trim().length > 0
+      : selectedFormat !== null;
+
   const handleDownload = () => {
-    if (!dataRetrieved || !outputData) return;
+    if (!outputData) return;
 
-    let filename = '';
-    let mimeType = '';
-
-    switch (selectedFormat) {
-      case 'nested':
-        filename = 'highest_peaks.txt';
-        mimeType = 'text/plain';
-        break;
-      case 'json':
-        filename = 'highest_peaks.json';
-        mimeType = 'application/json';
-        break;
-      case 'yaml':
-        filename = 'highest_peaks.yml';
-        mimeType = 'text/yaml';
-        break;
+    let filename = 'response.txt';
+    let mimeType = 'text/plain';
+    if (promptMode === 'preset' && selectedFormat) {
+      switch (selectedFormat) {
+        case 'nested':
+          filename = 'highest_peaks.txt';
+          break;
+        case 'json':
+          filename = 'highest_peaks.json';
+          mimeType = 'application/json';
+          break;
+        case 'yaml':
+          filename = 'highest_peaks.yml';
+          mimeType = 'text/yaml';
+          break;
+      }
     }
 
     const blob = new Blob([outputData], { type: mimeType });
@@ -115,74 +100,114 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Highest Peaks Data</h1>
-        <p>Get formatted mountain peaks data in the necessary format</p>
+        <h1>Claude Chat</h1>
+        <p>Use presets or enter your own prompt</p>
       </header>
-      
+
       <main className="App-main">
-        <div className="section location-section">
-          <h2>Select Location</h2>
-          <div className="location-buttons">
+        <div className="section mode-section">
+          <h2>Prompt Mode</h2>
+          <div className="mode-buttons">
             <button
-              className={`btn btn-secondary location-btn ${selectedLocation === 'mexico' ? 'active' : ''}`}
-              onClick={() => handleLocationSelect('mexico')}
+              className={`btn btn-secondary mode-btn ${promptMode === 'preset' ? 'active' : ''}`}
+              onClick={() => setPromptMode('preset')}
             >
-              Mexico
+              Preset Options
             </button>
             <button
-              className={`btn btn-secondary location-btn ${selectedLocation === 'latinAmerica' ? 'active' : ''}`}
-              onClick={() => handleLocationSelect('latinAmerica')}
+              className={`btn btn-secondary mode-btn ${promptMode === 'custom' ? 'active' : ''}`}
+              onClick={() => setPromptMode('custom')}
             >
-              Latin America
-            </button>
-            <button
-              className={`btn btn-secondary location-btn ${selectedLocation === 'world' ? 'active' : ''}`}
-              onClick={() => handleLocationSelect('world')}
-            >
-              World
+              Custom Prompt
             </button>
           </div>
         </div>
 
-        <div className="section format-section">
-          <h2>Select Output Format</h2>
-          <div className="format-buttons">
-            <button
-              className={`btn btn-secondary format-btn ${selectedFormat === 'nested' ? 'active' : ''}`}
-              onClick={() => handleFormatSelect('nested')}
-            >
-              Nested Text Data
-            </button>
-            <button
-              className={`btn btn-secondary format-btn ${selectedFormat === 'json' ? 'active' : ''}`}
-              onClick={() => handleFormatSelect('json')}
-            >
-              JSON
-            </button>
-            <button
-              className={`btn btn-secondary format-btn ${selectedFormat === 'yaml' ? 'active' : ''}`}
-              onClick={() => handleFormatSelect('yaml')}
-            >
-              YAML
-            </button>
+        {promptMode === 'preset' ? (
+          <>
+            <div className="section location-section">
+              <h2>Select Location</h2>
+              <div className="location-buttons">
+                <button
+                  className={`btn btn-secondary location-btn ${selectedLocation === 'mexico' ? 'active' : ''}`}
+                  onClick={() => setSelectedLocation('mexico')}
+                >
+                  Mexico
+                </button>
+                <button
+                  className={`btn btn-secondary location-btn ${selectedLocation === 'latinAmerica' ? 'active' : ''}`}
+                  onClick={() => setSelectedLocation('latinAmerica')}
+                >
+                  Latin America
+                </button>
+                <button
+                  className={`btn btn-secondary location-btn ${selectedLocation === 'world' ? 'active' : ''}`}
+                  onClick={() => setSelectedLocation('world')}
+                >
+                  World
+                </button>
+              </div>
+            </div>
+
+            <div className="section format-section">
+              <h2>Select Output Format</h2>
+              <div className="format-buttons">
+                <button
+                  className={`btn btn-secondary format-btn ${selectedFormat === 'nested' ? 'active' : ''}`}
+                  onClick={() => setSelectedFormat('nested')}
+                >
+                  Nested Text Data
+                </button>
+                <button
+                  className={`btn btn-secondary format-btn ${selectedFormat === 'json' ? 'active' : ''}`}
+                  onClick={() => setSelectedFormat('json')}
+                >
+                  JSON
+                </button>
+                <button
+                  className={`btn btn-secondary format-btn ${selectedFormat === 'yaml' ? 'active' : ''}`}
+                  onClick={() => setSelectedFormat('yaml')}
+                >
+                  YAML
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="section prompt-section">
+            <h2>Your Prompt</h2>
+            <textarea
+              className="prompt-input"
+              value={customPrompt}
+              onChange={(e) => setCustomPrompt(e.target.value)}
+              onKeyDown={(e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                  e.preventDefault();
+                  handleSubmit();
+                }
+              }}
+              placeholder="e.g. List the 5 highest peaks in Mexico with name, altitude, and location in JSON format"
+              rows={5}
+              disabled={isLoading}
+            />
           </div>
-        </div>
+        )}
 
         <div className="action-section">
           <button
-            className="btn btn-primary get-data-btn"
-            onClick={handleGetData}
-            disabled={!selectedFormat || isLoading}
+            className="btn btn-primary submit-btn"
+            onClick={handleSubmit}
+            disabled={!canSubmit || isLoading}
           >
-            {isLoading ? 'Getting Data...' : 'Get Data'}
+            {isLoading ? 'Getting Response...' : 'Get Response'}
           </button>
-          
+
           <button
             className="btn btn-success download-btn"
             onClick={handleDownload}
-            disabled={!dataRetrieved}
+            disabled={!outputData}
           >
-            Download Data
+            Download Response
           </button>
         </div>
 
@@ -194,12 +219,12 @@ const App: React.FC = () => {
         )}
 
         <div className="section output-section">
-          <h2>Output</h2>
+          <h2>Response</h2>
           <textarea
             className="output-textbox"
             value={outputData}
             readOnly
-            placeholder={isLoading ? "Loading data from Claude..." : "Select a location, format and click 'Get Data' to see the formatted output..."}
+            placeholder={isLoading ? 'Loading response from Claude...' : "Select options or enter a prompt, then click 'Get Response'..."}
           />
         </div>
       </main>

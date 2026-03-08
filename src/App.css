@@ -151,6 +151,63 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* Mode section */
+.mode-section {
+  margin-bottom: 2rem;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  min-width: 140px;
+}
+
+.mode-btn.active {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+/* Prompt section */
+.prompt-section {
+  margin-bottom: 2rem;
+}
+
+.prompt-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.prompt-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(94, 106, 210, 0.1);
+}
+
+.prompt-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.prompt-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 /* Location section */
 .location-section {
   margin-bottom: 2rem;
@@ -216,7 +273,7 @@ body {
   flex-wrap: wrap;
 }
 
-.get-data-btn {
+.submit-btn {
   composes: btn btn-primary;
   min-width: 150px;
   font-size: 1rem;
