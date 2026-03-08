@@ -1,61 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
+import { getPromptForFormat, type FormatType, type LocationType } from './prompts/main';
 
-// Import the prompt concatenation function
-let getPromptForFormat: any;
-try {
-  const promptsModule = require('../prompts/main.js');
-  getPromptForFormat = promptsModule.getPromptForFormat;
-  console.log('Prompts module loaded successfully:', promptsModule);
-  console.log('Available exports:', Object.keys(promptsModule));
-} catch (error) {
-  console.error('Failed to load prompts module:', error);
-  // Fallback function that concatenates main_prompt with format
-  getPromptForFormat = (format: string, location: string) => {
-    const locationPrompts = {
-      mexico: "5 highest Mexico peaks: Name, Alt (m), Location as Country, State.",
-      latinAmerica: "5 highest peaks in Latam: Name, Alt (m), Location as Country, State.",
-      world: "5 highest peaks in the world with: Name, Alt (m), Location as Country, State."
-    };
-    
-    const main_prompt = locationPrompts[location as keyof typeof locationPrompts] || locationPrompts.latinAmerica;
-    
-    const formatPrompts = {
-      json: `as the following json format: 
-### Example:
-[
-    {
-        "name": "Cotopaxi",
-        "altitude": "5897 m.s.n.m",
-        "location": "Latacunga, Ecuador"
-    }
-]`,
-      nested: `as the following nested text data format: 
-### Example:
-- name: Cotopaxi
-  altitude: 5897 m.s.n.m
-  location: Latacunga, Ecuador`,
-      yaml: `as the following yaml format: 
-### Example:
-- name: Cotopaxi
-  altitude: 5897 m.s.n.m
-  location: Latacunga, Ecuador`
-    };
-    return `${main_prompt} ${formatPrompts[format as keyof typeof formatPrompts] || ''}`;
-  };
-}
-
-type FormatType = 'nested' | 'json' | 'yaml' | null;
-type LocationType = 'mexico' | 'latinAmerica' | 'world';
-
-interface Peak {
-  name: string;
-  altitude: string;
-  location: string;
-}
+type FormatTypeOrNull = FormatType | null;
 
 const App: React.FC = () => {
-  const [selectedFormat, setSelectedFormat] = useState<FormatType>(null);
+  const [selectedFormat, setSelectedFormat] = useState<FormatTypeOrNull>(null);
   const [selectedLocation, setSelectedLocation] = useState<LocationType>('latinAmerica');
   const [outputData, setOutputData] = useState<string>('');
   const [dataRetrieved, setDataRetrieved] = useState<boolean>(false);
@@ -101,7 +51,7 @@ const App: React.FC = () => {
     return data.choices[0]?.message?.content || 'No response from OpenAI';
   };
 
-  const handleFormatSelect = (format: FormatType) => {
+  const handleFormatSelect = (format: FormatType): void => {
     console.log('Format selected:', format);
     setSelectedFormat(format);
     setDataRetrieved(false);
@@ -127,12 +77,13 @@ const App: React.FC = () => {
       return;
     }
 
+    const format = selectedFormat;
     setIsLoading(true);
     setError('');
     
     try {
-      console.log('Getting prompt for format:', selectedFormat, 'and location:', selectedLocation);
-      const prompt = getPromptForFormat(selectedFormat, selectedLocation);
+      console.log('Getting prompt for format:', format, 'and location:', selectedLocation);
+      const prompt = getPromptForFormat(format, selectedLocation);
       console.log('Generated concatenated prompt:', prompt);
       
       const result = await callOpenAI(prompt);
