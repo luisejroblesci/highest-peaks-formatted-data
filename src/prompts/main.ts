@@ -9,7 +9,7 @@ What the user is asking is: {{user_prompt}}
 - If user mentions mention other format outside of JSON, YAML, nested text. Default to JSON format.
 - For altitude, only plain number, no commas or abbreviations. Example: 5897, not 5,897 m.s.n.m.
 - For location, only state. No country. Example: Latacunga not Latacunga, Ecuador.
-- Output ONLY the raw data. Do not wrap the output in markdown code fences (\`\`\` or \`\`\`json). Do not include any backticks. Start your response directly with the data (e.g., start with [ or {).
+- Inside the <answer> tag, output ONLY the raw data. Do not wrap the output in markdown code fences (\`\`\` or \`\`\`json). Do not include any backticks. The content inside <answer> should start directly with the data (e.g., start with [ or {).
 If user asks something non related to highest peaks, respond with "I'm sorry, I can only help with highest peaks."
 `;
 

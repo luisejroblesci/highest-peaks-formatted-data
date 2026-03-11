@@ -11,27 +11,27 @@ export const eval_data: EvalItem[] = [
   { prompt: 'List the 5 highest peaks in Mexico with name, altitude, and location in JSON format', golden_answer:`[
   {
     "name": "Pico de Orizaba (Citlaltépetl)",
-    "altitude_meters": 5636,
+    "altitude": 5636,
     "location": "Puebla / Veracruz"
   },
   {
     "name": "Popocatépetl",
-    "altitude_meters": 5426,
+    "altitude": 5426,
     "location": "Puebla / Estado de México / Morelos"
   },
   {
     "name": "Iztaccíhuatl",
-    "altitude_meters": 5230,
+    "altitude": 5230,
     "location": "Puebla / Estado de México"
   },
   {
     "name": "Nevado de Toluca (Xinantécatl)",
-    "altitude_meters": 4680,
+    "altitude": 4680,
     "location": "Estado de México"
   },
   {
     "name": "Sierra Negra (Tliltépetl)",
-    "altitude_meters": 4580,
+    "altitude": 4580,
     "location": "Puebla"
   }
 ]`, label: 'mountain_related' },
@@ -70,25 +70,20 @@ export const eval_data: EvalItem[] = [
   },
   {
     "name": "Salc` ,label: 'mountain_related' },
-  { prompt: 'Give me the top 5 peaks in Ecuador as YAML with name, altitude, and province', golden_answer:`peaks:
-  - name: Chimborazo
-    altitude_meters: 6263
-    province: Bolívar / Chimborazo
-
+  { prompt: 'Give me the top 5 peaks in Ecuador as YAML with name, altitude, and province', golden_answer:`- name: Chimborazo
+    altitude: 6263
+    province: Chimborazo
   - name: Cotopaxi
-    altitude_meters: 5897
+    altitude: 5897
     province: Cotopaxi
-
   - name: Cayambe
-    altitude_meters: 5790
-    province: Pichincha / Napo
-
+    altitude: 5790
+    province: Pichincha
   - name: Antisana
-    altitude_meters: 5758
-    province: Napo / Pichincha
-
+    altitude: 5758
+    province: Pichincha
   - name: El Altar (Capac Urcu)
-    altitude_meters: 5320
+    altitude: 5320
     province: Chimborazo`, label: 'mountain_related' },
   { prompt: 'Highest peaks in Colombia with coordinates and elevation', golden_answer:``, label: 'mountain_related' },
   { prompt: 'List the 7 tallest mountains in Argentina, format as nested text', golden_answer:`1. Aconcagua
@@ -150,62 +145,62 @@ export const eval_data: EvalItem[] = [
   { prompt: 'Top 10 mountains in Nepal - name, height, and region in JSON', golden_answer:`[
   {
     "name": "Mount Everest (Sagarmatha)",
-    "height_meters": 8849,
+    "height": 8849,
     "region": "Solukhumbu"
   },
   {
     "name": "Kangchenjunga",
-    "height_meters": 8586,
+    "height": 8586,
     "region": "Taplejung"
   },
   {
     "name": "Lhotse",
-    "height_meters": 8516,
+    "height": 8516,
     "region": "Solukhumbu"
   },
   {
     "name": "Makalu",
-    "height_meters": 8485,
+    "height": 8485,
     "region": "Sankhuwasabha"
   },
   {
     "name": "Cho Oyu",
-    "height_meters": 8188,
+    "height": 8188,
     "region": "Solukhumbu"
   },
   {
     "name": "Dhaulagiri I",
-    "height_meters": 8167,
+    "height": 8167,
     "region": "M`, label: 'mountain_related' },
   { prompt: 'What are the highest peaks in Japan? Include elevation and prefecture.', golden_answer:`[
   {
     "name": "Mount Fuji (富士山)",
-    "elevation_meters": 3776,
+    "elevation": 3776,
     "prefecture": "Shizuoka / Yamanashi"
   },
   {
     "name": "Kita-dake (北岳)",
-    "elevation_meters": 3193,
+    "elevation": 3193,
     "prefecture": "Yamanashi"
   },
   {
     "name": "Oku-Hotaka-dake (奥穂高岳)",
-    "elevation_meters": 3190,
+    "elevation": 3190,
     "prefecture": "Nagano / Gifu"
   },
   {
     "name": "Ai-no-dake (間ノ岳)",
-    "elevation_meters": 3190,
+    "elevation": 3190,
     "prefecture": "Yamanashi / Shizuoka"
   },
   {
     "name": "Yari-ga-take (槍ヶ岳)",
-    "elevation_meters": 3180,
+    "elevation": 3180,
     "prefecture": "Nagano / Gifu"
   },
   {
     "name": "Higashi-dake (東岳 / 悪沢岳)",
-    "elevation_meters": 3141,
+    "elevation": 3141,
     "prefecture": "Shizuoka`, label: 'mountain_related' },
   { prompt: 'List the tallest mountains in the United States as a table', golden_answer:`| Rank | Name | Elevation (m) | State |
 |------|------|---------------|-------|
@@ -221,43 +216,43 @@ export const eval_data: EvalItem[] = [
 | 10 | Mount Whitney | 4,421 | California |`, label: 'mountain_related' },
   { prompt: 'Highest peaks in Switzerland with altitude and canton in YAML format', golden_answer:`peaks:
   - name: Dufourspitze (Monte Rosa)
-    altitude_meters: 4634
+    altitude: 4634
     canton: Valais
 
   - name: Dom
-    altitude_meters: 4545
+    altitude: 4545
     canton: Valais
 
   - name: Liskamm
-    altitude_meters: 4527
+    altitude: 4527
     canton: Valais
 
   - name: Weisshorn
-    altitude_meters: 4506
+    altitude: 4506
     canton: Valais
 
   - name: Täschhorn
-    altitude_meters: 4491
+    altitude: 4491
     canton: Valais
 
   - name: Matterhorn (Cervino)
-    altitude_meters: 4478
+    altitude: 4478
     canton: Valais
 
   - name: Dent Blanche
-    altitude_meters: 4357
+    altitude: 4357
     canton: Valais
 
   - name: Grand Combin
-    altitude_meters: 4314
+    altitude: 4314
     canton: Valais
 
   - name: Finsteraarhorn
-    altitude_meters: 4274
+    altitude: 4274
     canton: Bern / Valais
 
   - name: Zinalrothorn
-    altitude_meters: 4221
+    altitude: 4221
     canton: Valais`, label: 'mountain_related' },
   { prompt: '5 highest mountains in India with name, elevation, and state', golden_answer:`[
   {
