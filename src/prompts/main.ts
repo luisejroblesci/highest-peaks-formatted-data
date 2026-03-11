@@ -1,27 +1,34 @@
 export type FormatType = 'nested' | 'json' | 'yaml';
 export type LocationType = 'mexico' | 'latinAmerica' | 'world';
 
-export const main_prompt = `Give the the list of the 20 highest peaks in Mexico. Name, Altitude as " 5000 m.s.n.m" (meters above sea level), and Location as "State, Country".`;
-export const json_format = `as the following json format: 
-### Example:
+export const main_prompt = `
+You're an assistant that goes and looks up the highest peaks in whatever city, country, state, region available on the planet.
+What the user is asking is: {{user_prompt}}
+- If no format is specified, the format should be JSON. Strictly follow the format: {{json_format}}. Avoid adding rank
+- If user mentions "nested text" default to JSON format.
+- For altitude, only plain number, no commas or abbreviations. Example: 5897, not 5,897 m.s.n.m.
+- For location, only city and state. No country. Example: Latacunga, Ecuador, not Latacunga, Ecuador, United States.
+- Output ONLY the raw data. Do not wrap the output in markdown code fences (\`\`\` or \`\`\`json). Do not include any backticks. Start your response directly with the data (e.g., start with [ or {).
+If user asks something non related to highest peaks, respond with "I'm sorry, I can only help with highest peaks."
+`;
+
+export const json_format = `
 [
     {
-        "name": "Cotopaxi",
-        "altitude": "5897 m.s.n.m",
-        "location": "Latacunga, Ecuador"
+        "name": <mountain-name>,
+        "altitude": "<altitude-meters>",
+        "location": "<state>"
     }
 ]`;
-export const nested_text_data = `as the following nested text data format: 
-### Example:
-- name: Cotopaxi
-  altitude: 5897 m.s.n.m
-  location: Latacunga, Ecuador`;
+export const nested_text_data = `
+- name: <mountain-name>
+  altitude: <altitude-meters>
+  location: <state>`;
 
-export const yaml_data = `as the following nested text data format: 
-  ### Example:
-  - name: Cotopaxi
-    altitude: 5897 m.s.n.m
-    location: Latacunga, Ecuador`;
+export const yaml_data = `
+  - name: <mountain-name>
+    altitude: <altitude-meters>
+    location: <state>`;
 
 const locationPrompts: Record<LocationType, string> = {
   mexico: '5 highest Mexico peaks: Name, Alt (m), Location as Country, State.',

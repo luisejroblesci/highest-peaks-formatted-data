@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import Anthropic from '@anthropic-ai/sdk';
 import './App.css';
 import { getPromptForFormat, type FormatType, type LocationType } from './prompts/main';
+import EvalsView from './EvalsView';
+
+type AppView = 'main' | 'evals';
 
 type PromptMode = 'preset' | 'custom';
 type FormatTypeOrNull = FormatType | null;
 
 const App: React.FC = () => {
+  const [activeView, setActiveView] = useState<AppView>('main');
   const [promptMode, setPromptMode] = useState<PromptMode>('preset');
   const [selectedFormat, setSelectedFormat] = useState<FormatTypeOrNull>(null);
   const [selectedLocation, setSelectedLocation] = useState<LocationType>('latinAmerica');
@@ -102,8 +106,27 @@ const App: React.FC = () => {
       <header className="App-header">
         <h1>Claude Chat</h1>
         <p>Use presets or enter your own prompt</p>
+        <nav className="app-nav">
+          <button
+            className={`btn btn-secondary nav-btn ${activeView === 'main' ? 'active' : ''}`}
+            onClick={() => setActiveView('main')}
+          >
+            Prompt
+          </button>
+          <button
+            className={`btn btn-secondary nav-btn ${activeView === 'evals' ? 'active' : ''}`}
+            onClick={() => setActiveView('evals')}
+          >
+            Evals
+          </button>
+        </nav>
       </header>
 
+      {activeView === 'evals' ? (
+        <main className="App-main evals-main">
+          <EvalsView />
+        </main>
+      ) : (
       <main className="App-main">
         <div className="section mode-section">
           <h2>Prompt Mode</h2>
@@ -228,6 +251,7 @@ const App: React.FC = () => {
           />
         </div>
       </main>
+      )}
     </div>
   );
 };

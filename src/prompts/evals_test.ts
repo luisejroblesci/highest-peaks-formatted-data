@@ -1,12 +1,12 @@
-type Label = 'mountain_related' | 'non_related';
+export type Label = 'mountain_related' | 'non_related';
 
-interface EvalItem {
+export interface EvalItem {
   prompt: string;
   golden_answer: string;
   label: Label;
 }
 
-const eval_data: EvalItem[] = [
+export const eval_data: EvalItem[] = [
   // mountain_related - prompts about highest peaks in various countries
   { prompt: 'List the 5 highest peaks in Mexico with name, altitude, and location in JSON format', golden_answer:`[
   {
@@ -339,16 +339,16 @@ const eval_data: EvalItem[] = [
   }
 ]`, label: 'mountain_related' },
   // non_related - prompts unrelated to mountains
-  { prompt: 'What are the best Italian restaurants in New York City?', golden_answer:``, label: 'non_related' },
-  { prompt: 'Explain quantum entanglement in simple terms', golden_answer:``, label: 'non_related' },
-  { prompt: 'List 5 popular programming languages and their main use cases', golden_answer:``, label: 'non_related' },
-  { prompt: 'How do I make chocolate chip cookies from scratch?', golden_answer:``, label: 'non_related' },
-  { prompt: 'What is the capital of Australia and its population?', golden_answer:``, label: 'non_related' },
-  { prompt: 'Write a haiku about the ocean', golden_answer:``, label: 'non_related' },
-  { prompt: 'List the top 10 movies of 2024 by box office sales', golden_answer:``, label: 'non_related' },
-  { prompt: 'How does photosynthesis work in plants?', golden_answer:``, label: 'non_related' },
-  { prompt: 'Best practices for remote work productivity', golden_answer:``, label: 'non_related' },
-  { prompt: 'What are the symptoms of the common cold and how to treat it?', golden_answer:``, label: 'non_related' },
-  { prompt: 'Compare the specs of iPhone 15 vs Samsung Galaxy S24', golden_answer:``, label: 'non_related' },
-  { prompt: 'How to invest in index funds for beginners', golden_answer:``, label: 'non_related' },
+  { prompt: 'What are the best Italian restaurants in New York City?', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'Explain quantum entanglement in simple terms', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'List 5 popular programming languages and their main use cases', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'How do I make chocolate chip cookies from scratch?', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'What is the capital of Australia and its population?', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'Write a haiku about the ocean', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'List the top 10 movies of 2024 by box office sales', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'How does photosynthesis work in plants?', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'Best practices for remote work productivity', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'What are the symptoms of the common cold and how to treat it?', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'Compare the specs of iPhone 15 vs Samsung Galaxy S24', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
+  { prompt: 'How to invest in index funds for beginners', golden_answer:`I'm sorry, I can only help with highest peaks.`, label: 'non_related' },
 ];
