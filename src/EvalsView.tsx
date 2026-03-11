@@ -12,8 +12,16 @@ interface EvalResult {
   grade: boolean | null;
 }
 
-const gradeCompletion = (output: string, goldenAnswer: string): boolean =>
-  output.trim() === goldenAnswer.trim();
+const extractTag = (text: string, tag: string): string => {
+  const match = text.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
+  return match ? match[1].trim() : '';
+};
+
+const gradeCompletion = (output: string, goldenAnswer: string): boolean => {
+  const answer = extractTag(output, 'answer');
+  const textToGrade = answer || output;
+  return textToGrade.trim() === goldenAnswer.trim();
+};
 
 const callClaude = async (userPrompt: string): Promise<string> => {
   const apiKey = process.env.REACT_APP_ANTHROPIC_API_KEY;
@@ -129,6 +137,7 @@ const EvalsView: React.FC = () => {
             <tr>
               <th className="col-prompt">Prompt</th>
               <th className="col-response">Response</th>
+              <th className="col-answer">Answer</th>
               <th className="col-golden">Golden Answer</th>
               <th className="col-grade">Grade</th>
               <th className="col-label">Label</th>
@@ -146,7 +155,14 @@ const EvalsView: React.FC = () => {
                   ) : result.status === 'error' ? (
                     <span className="error-text">{result.response}</span>
                   ) : (
-                    <pre className="cell-content">{result.response || '—'}</pre>
+                    <pre className="cell-content">{extractTag(result.response, 'thinking') || result.response || '—'}</pre>
+                  )}
+                </td>
+                <td className="col-answer">
+                  {result.status === 'loading' ? (
+                    <span className="loading-text">Loading...</span>
+                  ) : result.status === 'error' ? null : (
+                    <pre className="cell-content">{extractTag(result.response, 'answer') || '—'}</pre>
                   )}
                 </td>
                 <td className="col-golden">

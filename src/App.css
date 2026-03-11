@@ -594,11 +594,15 @@ body {
 }
 
 .col-response {
-  width: 37%;
+  width: 25%;
+}
+
+.col-answer {
+  width: 20%;
 }
 
 .col-golden {
-  width: 37%;
+  width: 25%;
 }
 
 .cell-content {
