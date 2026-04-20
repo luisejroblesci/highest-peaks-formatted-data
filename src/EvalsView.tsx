@@ -12,12 +12,12 @@ interface EvalResult {
   grade: boolean | null;
 }
 
-const extractTag = (text: string, tag: string): string => {
+export const extractTag = (text: string, tag: string): string => {
   const match = text.match(new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`));
   return match ? match[1].trim() : '';
 };
 
-const gradeCompletion = (output: string, goldenAnswer: string): boolean => {
+export const gradeCompletion = (output: string, goldenAnswer: string): boolean => {
   const answer = extractTag(output, 'answer');
   const textToGrade = answer || output;
   return textToGrade.trim() === goldenAnswer.trim();
