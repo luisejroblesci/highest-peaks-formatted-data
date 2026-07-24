@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Anthropic from '@anthropic-ai/sdk';
 import { eval_data, type EvalItem } from './prompts/evals_test';
-import { main_prompt } from './prompts/main';
+import { system_prompt } from './prompts/main';
 
 type EvalStatus = 'idle' | 'loading' | 'done' | 'error';
 
@@ -34,8 +34,9 @@ const callClaude = async (userPrompt: string): Promise<string> => {
   const message = await client.messages.create({
     model: 'claude-haiku-4-5',
     max_tokens: 2000,
+    system: system_prompt,
     messages: [{ role: 'user', content: userPrompt }],
-    temperature: 0.7,
+    temperature: 0,
   });
 
   const textBlock = message.content.find(
@@ -61,14 +62,10 @@ const EvalsView: React.FC = () => {
       grade: null,
     }));
 
-    const firstFilledPrompt = main_prompt.replace('{{user_prompt}}', eval_data[0].prompt);
-    console.log('First eval prompt:', firstFilledPrompt);
-
     await Promise.all(
       eval_data.map(async (item, index) => {
         try {
-          const filledPrompt = main_prompt.replace('{{user_prompt}}', item.prompt);
-          const response = await callClaude(filledPrompt);
+          const response = await callClaude(item.prompt);
           const grade = item.golden_answer ? gradeCompletion(response, item.golden_answer) : null;
           updated[index] = { item, response, status: 'done', grade };
         } catch (err) {

@@ -1,4 +1,4 @@
-import { getPromptForFormat, main_prompt } from './main';
+import { getPromptForFormat, system_prompt } from './main';
 
 describe('getPromptForFormat', () => {
   const formats = ['nested', 'json', 'yaml'] as const;
@@ -48,20 +48,30 @@ describe('getPromptForFormat', () => {
   });
 });
 
-describe('main_prompt template', () => {
-  it('contains the {{user_prompt}} placeholder', () => {
-    expect(main_prompt).toContain('{{user_prompt}}');
-  });
-
-  it('contains the {{json_format}} placeholder', () => {
-    expect(main_prompt).toContain('{{json_format}}');
-  });
-
+describe('system_prompt', () => {
   it('contains the fallback refusal message for off-topic prompts', () => {
-    expect(main_prompt).toContain("I'm sorry, I can only help with highest peaks.");
+    expect(system_prompt).toContain("I'm sorry, I can only help with highest peaks.");
   });
 
   it('instructs output inside <answer> tag', () => {
-    expect(main_prompt).toContain('<answer>');
+    expect(system_prompt).toContain('<answer>');
+  });
+
+  it('instructs reasoning inside <thinking> tag', () => {
+    expect(system_prompt).toContain('<thinking>');
+  });
+
+  it('embeds the JSON format example directly (no unfilled placeholders)', () => {
+    expect(system_prompt).not.toContain('{{');
+    expect(system_prompt).toContain('"name"');
+    expect(system_prompt).toContain('"altitude"');
+  });
+
+  it('instructs altitude as plain numbers', () => {
+    expect(system_prompt).toMatch(/altitude.+plain number/i);
+  });
+
+  it('instructs location as state only', () => {
+    expect(system_prompt).toMatch(/location.+state/i);
   });
 });

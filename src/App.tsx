@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Anthropic from '@anthropic-ai/sdk';
 import './App.css';
-import { getPromptForFormat, type FormatType, type LocationType } from './prompts/main';
+import { getPromptForFormat, system_prompt, type FormatType, type LocationType } from './prompts/main';
 import EvalsView from './EvalsView';
 
 type AppView = 'main' | 'evals';
@@ -30,6 +30,7 @@ const App: React.FC = () => {
     const message = await client.messages.create({
       model: 'claude-haiku-4-5',
       max_tokens: 2000,
+      system: system_prompt,
       messages: [{ role: 'user', content: userPrompt }],
       temperature: 0.7,
     });
