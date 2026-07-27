@@ -124,3 +124,15 @@ describe('App – download button', () => {
     expect(screen.getByRole('button', { name: /download response/i })).toBeDisabled();
   });
 });
+
+describe('App – clear output button', () => {
+  test('clear button is present in the main view', () => {
+    render(<App />);
+    expect(screen.getByRole('button', { name: /clear output/i })).toBeInTheDocument();
+  });
+
+  test('clear button is disabled when there is no output', () => {
+    render(<App />);
+    expect(screen.getByRole('button', { name: /clear output/i })).toBeDisabled();
+  });
+});
