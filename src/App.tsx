@@ -233,6 +233,14 @@ const App: React.FC = () => {
           >
             Download Response
           </button>
+
+          <button
+            className="btn btn-secondary clear-btn"
+            onClick={() => setOutputData('')}
+            disabled={!outputData}
+          >
+            Clear Output
+          </button>
         </div>
 
         {error && (
