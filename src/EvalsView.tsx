@@ -20,7 +20,7 @@ export const extractTag = (text: string, tag: string): string => {
 export const gradeCompletion = (output: string, goldenAnswer: string): boolean => {
   const answer = extractTag(output, 'answer');
   const textToGrade = answer || output;
-  return textToGrade.trim() === goldenAnswer.trim();
+  return textToGrade.trim().toLowerCase() === goldenAnswer.trim().toLowerCase();
 };
 
 const callClaude = async (userPrompt: string): Promise<string> => {

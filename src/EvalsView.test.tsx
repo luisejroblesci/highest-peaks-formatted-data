@@ -63,6 +63,19 @@ describe('gradeCompletion', () => {
     expect(gradeCompletion('correct', 'correct')).toBe(true);
     expect(gradeCompletion('wrong', 'correct')).toBe(false);
   });
+
+  it('matches case-insensitively when answer tag differs in case', () => {
+    const output = '<answer>CORRECT</answer>';
+    expect(gradeCompletion(output, 'correct')).toBe(true);
+  });
+
+  it('matches case-insensitively for raw output fallback', () => {
+    expect(gradeCompletion('Correct', 'correct')).toBe(true);
+  });
+
+  it('still returns false for a genuine mismatch regardless of case', () => {
+    expect(gradeCompletion('<answer>wrong</answer>', 'CORRECT')).toBe(false);
+  });
 });
 
 describe('eval_data', () => {
