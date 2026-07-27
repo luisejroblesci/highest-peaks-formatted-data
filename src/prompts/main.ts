@@ -1,4 +1,4 @@
-export type FormatType = 'nested' | 'json' | 'yaml';
+export type FormatType = 'nested' | 'json' | 'yaml' | 'markdown';
 export type LocationType = 'mexico' | 'latinAmerica' | 'world';
 
 export const json_format = `
@@ -19,6 +19,13 @@ export const yaml_data = `
   - name: <mountain-name>
     altitude: <altitude-meters>
     location: <state>`;
+
+export const markdown_format = `
+## Highest Peaks
+
+| Name | Altitude (m) | Location |
+|------|-------------|----------|
+| <mountain-name> | <altitude-meters> | <state> |`;
 
 export const system_prompt = `You are an assistant that helps users look up the highest peaks in cities, countries, states, and regions around the planet.
 
@@ -41,6 +48,7 @@ const formatPrompts: Record<FormatType, string> = {
   json: json_format,
   nested: nested_text_data,
   yaml: yaml_data,
+  markdown: markdown_format,
 };
 
 export function getPromptForFormat(format: FormatType, location: LocationType): string {
