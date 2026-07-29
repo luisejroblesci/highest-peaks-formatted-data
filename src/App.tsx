@@ -88,6 +88,10 @@ const App: React.FC = () => {
           filename = 'highest_peaks.yml';
           mimeType = 'text/yaml';
           break;
+        case 'markdown':
+          filename = 'highest_peaks.md';
+          mimeType = 'text/markdown';
+          break;
       }
     }
 
@@ -193,6 +197,12 @@ const App: React.FC = () => {
                   onClick={() => setSelectedFormat('yaml')}
                 >
                   YAML
+                </button>
+                <button
+                  className={`btn btn-secondary format-btn ${selectedFormat === 'markdown' ? 'active' : ''}`}
+                  onClick={() => setSelectedFormat('markdown')}
+                >
+                  Markdown
                 </button>
               </div>
             </div>
