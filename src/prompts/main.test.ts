@@ -2,7 +2,7 @@ import { getPromptForFormat, system_prompt } from './main';
 
 describe('getPromptForFormat', () => {
   const formats = ['nested', 'json', 'yaml', 'markdown'] as const;
-  const locations = ['mexico', 'latinAmerica', 'world'] as const;
+  const locations = ['mexico', 'latinAmerica', 'world', 'northAmerica'] as const;
 
   it.each(formats.flatMap((f) => locations.map((l) => [f, l] as const)))(
     'returns a non-empty string for format=%s location=%s',
@@ -45,6 +45,14 @@ describe('getPromptForFormat', () => {
 
   it('produces different output for mexico vs world', () => {
     expect(getPromptForFormat('json', 'mexico')).not.toEqual(getPromptForFormat('json', 'world'));
+  });
+
+  it('includes "North America" for northAmerica location', () => {
+    expect(getPromptForFormat('json', 'northAmerica')).toMatch(/north america/i);
+  });
+
+  it('produces different output for northAmerica vs world', () => {
+    expect(getPromptForFormat('json', 'northAmerica')).not.toEqual(getPromptForFormat('json', 'world'));
   });
 
   it('includes markdown table header for markdown format', () => {

@@ -1,5 +1,5 @@
 export type FormatType = 'nested' | 'json' | 'yaml' | 'markdown';
-export type LocationType = 'mexico' | 'latinAmerica' | 'world';
+export type LocationType = 'mexico' | 'latinAmerica' | 'world' | 'northAmerica';
 
 export const json_format = `
 [
@@ -42,6 +42,7 @@ const locationPrompts: Record<LocationType, string> = {
   mexico: '5 highest Mexico peaks: Name, Alt (m), Location as Country, State.',
   latinAmerica: '5 highest peaks in Latam: Name, Alt (m), Location as Country, State.',
   world: '5 highest peaks in the world with: Name, Alt (m), Location as Country, State.',
+  northAmerica: '5 highest peaks in North America: Name, Alt (m), Location as Country, State.',
 };
 
 const formatPrompts: Record<FormatType, string> = {
