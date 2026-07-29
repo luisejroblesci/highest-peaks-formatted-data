@@ -17,10 +17,18 @@ export const extractTag = (text: string, tag: string): string => {
   return match ? match[1].trim() : '';
 };
 
+export const normalizeAnswer = (text: string): string => {
+  return text
+    .replace(/```[\w]*\n?/g, '')
+    .replace(/`/g, '')
+    .trim()
+    .toLowerCase();
+};
+
 export const gradeCompletion = (output: string, goldenAnswer: string): boolean => {
   const answer = extractTag(output, 'answer');
   const textToGrade = answer || output;
-  return textToGrade.trim().toLowerCase() === goldenAnswer.trim().toLowerCase();
+  return normalizeAnswer(textToGrade) === normalizeAnswer(goldenAnswer);
 };
 
 const callClaude = async (userPrompt: string): Promise<string> => {

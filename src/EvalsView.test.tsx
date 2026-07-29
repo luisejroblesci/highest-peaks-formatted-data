@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { extractTag, gradeCompletion } from './EvalsView';
+import { extractTag, gradeCompletion, normalizeAnswer } from './EvalsView';
 import EvalsView from './EvalsView';
 import { eval_data } from './prompts/evals_test';
 
@@ -43,6 +43,28 @@ describe('extractTag', () => {
   });
 });
 
+describe('normalizeAnswer', () => {
+  it('lowercases text', () => {
+    expect(normalizeAnswer('HELLO')).toBe('hello');
+  });
+
+  it('strips triple-backtick code fences', () => {
+    expect(normalizeAnswer('```json\n[{"name":"peak"}]\n```')).toBe('[{"name":"peak"}]');
+  });
+
+  it('strips inline backticks', () => {
+    expect(normalizeAnswer('`value`')).toBe('value');
+  });
+
+  it('trims surrounding whitespace', () => {
+    expect(normalizeAnswer('  hello  ')).toBe('hello');
+  });
+
+  it('returns empty string for empty input', () => {
+    expect(normalizeAnswer('')).toBe('');
+  });
+});
+
 describe('gradeCompletion', () => {
   it('returns true when answer tag matches golden answer exactly', () => {
     const output = '<thinking>thought</thinking><answer>correct</answer>';
@@ -75,6 +97,15 @@ describe('gradeCompletion', () => {
 
   it('still returns false for a genuine mismatch regardless of case', () => {
     expect(gradeCompletion('<answer>wrong</answer>', 'CORRECT')).toBe(false);
+  });
+
+  it('passes when answer tag contains code-fenced output matching golden answer', () => {
+    const output = '<answer>```json\ncorrect\n```</answer>';
+    expect(gradeCompletion(output, 'correct')).toBe(true);
+  });
+
+  it('passes when raw output with backtick formatting matches golden answer', () => {
+    expect(gradeCompletion('`correct`', 'correct')).toBe(true);
   });
 });
 
