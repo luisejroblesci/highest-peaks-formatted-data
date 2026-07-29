@@ -77,11 +77,18 @@ describe('App – preset mode', () => {
     expect(screen.getByRole('button', { name: /^world$/i })).toBeInTheDocument();
   });
 
-  test('renders all three format buttons', () => {
+  test('renders all four format buttons', () => {
     render(<App />);
     expect(screen.getByRole('button', { name: /nested text data/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^json$/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^yaml$/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^markdown$/i })).toBeInTheDocument();
+  });
+
+  test('submit button is enabled after selecting Markdown format', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /^markdown$/i }));
+    expect(screen.getByRole('button', { name: /get response/i })).not.toBeDisabled();
   });
 });
 
