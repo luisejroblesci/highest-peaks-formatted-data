@@ -2,14 +2,15 @@ name: ci tests
 discover: CI=true npx react-scripts test --listTests --watchAll=false
 run: JEST_JUNIT_OUTPUT_FILE="<< outputs.junit >>" JEST_JUNIT_ADD_FILE_ATTRIBUTE="true" CI=true npx react-scripts test --runInBand << test.atoms >> --reporters=jest-junit
 analysis: |
-  lcov_dir=$(dirname "<< outputs.lcov >>")
-  CI=true npx react-scripts test --runInBand --silent --bail \
-    --coverage --coverageReporters=lcov \
-    --coverageDirectory="$lcov_dir" \
+  CIRCLECI_COVERAGE="<< outputs.circleci-coverage >>" CI=true npx jest \
+    --config jest.config.analysis.js \
+    --runInBand \
+    --silent \
+    --bail \
     << test.atoms >>
 outputs:
   junit: test-reports/results.xml
-  lcov: coverage/lcov.info
+  circleci-coverage: coverage/circleci-coverage.json
 options:
   test-impact-analysis: true
   store-test-results: true

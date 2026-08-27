@@ -45,7 +45,9 @@
     ]
   },
   "devDependencies": {
-    "jest": "^27.5.1",
+    "@circleci/jest-circleci-coverage": "^0.4.350",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
     "jest-junit": "^17.0.0"
   }
 }
