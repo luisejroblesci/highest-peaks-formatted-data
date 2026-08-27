@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="109" failures="0" errors="0" time="0.958">
+  <testsuite name="App – initial render" errors="0" failures="0" skipped="0" timestamp="2026-08-27T02:53:07" time="0.612" tests="27">
+    <testcase classname="App – initial render renders the Claude Chat heading" name="App – initial render renders the Claude Chat heading" time="0.014">
+    </testcase>
+    <testcase classname="App – initial render shows Prompt and Evals nav buttons" name="App – initial render shows Prompt and Evals nav buttons" time="0.026">
+    </testcase>
+    <testcase classname="App – initial render shows Preset Options and Custom Prompt mode buttons" name="App – initial render shows Preset Options and Custom Prompt mode buttons" time="0.013">
+    </testcase>
+    <testcase classname="App – view switching clicking Evals nav renders the evals view" name="App – view switching clicking Evals nav renders the evals view" time="0.021">
+    </testcase>
+    <testcase classname="App – view switching clicking Prompt nav restores the main view" name="App – view switching clicking Prompt nav restores the main view" time="0.023">
+    </testcase>
+    <testcase classname="App – preset mode submit button is disabled when no format is selected" name="App – preset mode submit button is disabled when no format is selected" time="0.007">
+    </testcase>
+    <testcase classname="App – preset mode submit button is enabled after selecting JSON format" name="App – preset mode submit button is enabled after selecting JSON format" time="0.014">
+    </testcase>
+    <testcase classname="App – preset mode submit button is enabled after selecting YAML format" name="App – preset mode submit button is enabled after selecting YAML format" time="0.011">
+    </testcase>
+    <testcase classname="App – preset mode submit button is enabled after selecting Nested Text format" name="App – preset mode submit button is enabled after selecting Nested Text format" time="0.012">
+    </testcase>
+    <testcase classname="App – preset mode renders all three location buttons" name="App – preset mode renders all three location buttons" time="0.016">
+    </testcase>
+    <testcase classname="App – preset mode renders all four format buttons" name="App – preset mode renders all four format buttons" time="0.02">
+    </testcase>
+    <testcase classname="App – preset mode submit button is enabled after selecting Markdown format" name="App – preset mode submit button is enabled after selecting Markdown format" time="0.011">
+    </testcase>
+    <testcase classname="App – custom prompt mode switching to custom mode shows the prompt textarea" name="App – custom prompt mode switching to custom mode shows the prompt textarea" time="0.008">
+    </testcase>
+    <testcase classname="App – custom prompt mode submit button is disabled when custom prompt is empty" name="App – custom prompt mode submit button is disabled when custom prompt is empty" time="0.01">
+    </testcase>
+    <testcase classname="App – custom prompt mode submit button is enabled when custom prompt has text" name="App – custom prompt mode submit button is enabled when custom prompt has text" time="0.011">
+    </testcase>
+    <testcase classname="App – custom prompt mode submit button disabled again when custom prompt is cleared" name="App – custom prompt mode submit button disabled again when custom prompt is cleared" time="0.01">
+    </testcase>
+    <testcase classname="App – download button download button is disabled when there is no output" name="App – download button download button is disabled when there is no output" time="0.006">
+    </testcase>
+    <testcase classname="App – clear output button clear button is present in the main view" name="App – clear output button clear button is present in the main view" time="0.006">
+    </testcase>
+    <testcase classname="App – clear output button clear button is disabled when there is no output" name="App – clear output button clear button is disabled when there is no output" time="0.005">
+    </testcase>
+    <testcase classname="App – location selection Mexico button is not active by default" name="App – location selection Mexico button is not active by default" time="0.006">
+    </testcase>
+    <testcase classname="App – location selection clicking Mexico makes it the active location" name="App – location selection clicking Mexico makes it the active location" time="0.006">
+    </testcase>
+    <testcase classname="App – location selection clicking Latin America button selects it" name="App – location selection clicking Latin America button selects it" time="0.006">
+    </testcase>
+    <testcase classname="App – location selection selecting a location enables the submit button when a format is also selected" name="App – location selection selecting a location enables the submit button when a format is also selected" time="0.016">
+    </testcase>
+    <testcase classname="App – location selection only one location button is active at a time" name="App – location selection only one location button is active at a time" time="0.02">
+    </testcase>
+    <testcase classname="App – format selection only one format button is active at a time" name="App – format selection only one format button is active at a time" time="0.021">
+    </testcase>
+    <testcase classname="App – format selection clicking Markdown sets it active" name="App – format selection clicking Markdown sets it active" time="0.012">
+    </testcase>
+    <testcase classname="App – format selection clicking Nested Text sets it active" name="App – format selection clicking Nested Text sets it active" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="extractTag" errors="0" failures="0" skipped="0" timestamp="2026-08-27T02:53:08" time="0.123" tests="38">
+    <testcase classname="extractTag extracts content from a matching tag" name="extractTag extracts content from a matching tag" time="0.001">
+    </testcase>
+    <testcase classname="extractTag trims whitespace from extracted content" name="extractTag trims whitespace from extracted content" time="0">
+    </testcase>
+    <testcase classname="extractTag returns empty string when tag is absent" name="extractTag returns empty string when tag is absent" time="0">
+    </testcase>
+    <testcase classname="extractTag handles multi-line content inside tag" name="extractTag handles multi-line content inside tag" time="0">
+    </testcase>
+    <testcase classname="extractTag extracts thinking tag independently of answer tag" name="extractTag extracts thinking tag independently of answer tag" time="0">
+    </testcase>
+    <testcase classname="extractTag returns empty string for empty tag content" name="extractTag returns empty string for empty tag content" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer lowercases text" name="normalizeAnswer lowercases text" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer strips triple-backtick code fences" name="normalizeAnswer strips triple-backtick code fences" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer strips inline backticks" name="normalizeAnswer strips inline backticks" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer trims surrounding whitespace" name="normalizeAnswer trims surrounding whitespace" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer returns empty string for empty input" name="normalizeAnswer returns empty string for empty input" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion returns true when answer tag matches golden answer exactly" name="gradeCompletion returns true when answer tag matches golden answer exactly" time="0.001">
+    </testcase>
+    <testcase classname="gradeCompletion returns false when answer tag does not match" name="gradeCompletion returns false when answer tag does not match" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion ignores surrounding whitespace in comparison" name="gradeCompletion ignores surrounding whitespace in comparison" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion falls back to raw output when no answer tag is present" name="gradeCompletion falls back to raw output when no answer tag is present" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion matches case-insensitively when answer tag differs in case" name="gradeCompletion matches case-insensitively when answer tag differs in case" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion matches case-insensitively for raw output fallback" name="gradeCompletion matches case-insensitively for raw output fallback" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion still returns false for a genuine mismatch regardless of case" name="gradeCompletion still returns false for a genuine mismatch regardless of case" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion passes when answer tag contains code-fenced output matching golden answer" name="gradeCompletion passes when answer tag contains code-fenced output matching golden answer" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion passes when raw output with backtick formatting matches golden answer" name="gradeCompletion passes when raw output with backtick formatting matches golden answer" time="0">
+    </testcase>
+    <testcase classname="eval_data contains at least one mountain_related item" name="eval_data contains at least one mountain_related item" time="0">
+    </testcase>
+    <testcase classname="eval_data contains at least one non_related item" name="eval_data contains at least one non_related item" time="0">
+    </testcase>
+    <testcase classname="eval_data every item has a non-empty prompt" name="eval_data every item has a non-empty prompt" time="0.001">
+    </testcase>
+    <testcase classname="eval_data every item has a valid label" name="eval_data every item has a valid label" time="0">
+    </testcase>
+    <testcase classname="eval_data non_related items have a golden_answer refusal message" name="eval_data non_related items have a golden_answer refusal message" time="0.001">
+    </testcase>
+    <testcase classname="EvalsView component renders the eval count" name="EvalsView component renders the eval count" time="0.01">
+    </testcase>
+    <testcase classname="EvalsView component renders Run All Evals button" name="EvalsView component renders Run All Evals button" time="0.016">
+    </testcase>
+    <testcase classname="EvalsView component Run All Evals button is enabled before running" name="EvalsView component Run All Evals button is enabled before running" time="0.008">
+    </testcase>
+    <testcase classname="EvalsView component renders a row for each eval item" name="EvalsView component renders a row for each eval item" time="0.018">
+    </testcase>
+    <testcase classname="EvalsView component shows a table with expected column headers" name="EvalsView component shows a table with expected column headers" time="0.015">
+    </testcase>
+    <testcase classname="EvalsView component displays prompt text for each eval item in the table" name="EvalsView component displays prompt text for each eval item in the table" time="0.01">
+    </testcase>
+    <testcase classname="normalizeAnswer – edge cases handles code fence without a language tag" name="normalizeAnswer – edge cases handles code fence without a language tag" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer – edge cases preserves internal content after stripping fences" name="normalizeAnswer – edge cases preserves internal content after stripping fences" time="0">
+    </testcase>
+    <testcase classname="normalizeAnswer – edge cases is idempotent — normalizing twice gives the same result" name="normalizeAnswer – edge cases is idempotent — normalizing twice gives the same result" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion – additional cases handles golden answer with leading/trailing whitespace" name="gradeCompletion – additional cases handles golden answer with leading/trailing whitespace" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion – additional cases returns false when output is empty" name="gradeCompletion – additional cases returns false when output is empty" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion – additional cases returns false when golden answer is empty but output is not" name="gradeCompletion – additional cases returns false when golden answer is empty but output is not" time="0">
+    </testcase>
+    <testcase classname="gradeCompletion – additional cases returns true when both output and golden answer are empty" name="gradeCompletion – additional cases returns true when both output and golden answer are empty" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="formatElevation" errors="0" failures="0" skipped="0" timestamp="2026-08-27T02:53:08" time="0.044" tests="10">
+    <testcase classname="formatElevation formats a round number with the m suffix" name="formatElevation formats a round number with the m suffix" time="0.019">
+    </testcase>
+    <testcase classname="formatElevation formats a four-digit elevation without thousands separator gap" name="formatElevation formats a four-digit elevation without thousands separator gap" time="0">
+    </testcase>
+    <testcase classname="formatElevation formats zero elevation" name="formatElevation formats zero elevation" time="0">
+    </testcase>
+    <testcase classname="formatPeakName title-cases a lowercase name" name="formatPeakName title-cases a lowercase name" time="0">
+    </testcase>
+    <testcase classname="formatPeakName lowercases an all-caps name then title-cases it" name="formatPeakName lowercases an all-caps name then title-cases it" time="0.001">
+    </testcase>
+    <testcase classname="formatPeakName trims leading and trailing whitespace" name="formatPeakName trims leading and trailing whitespace" time="0">
+    </testcase>
+    <testcase classname="formatPeakName handles a single-word name" name="formatPeakName handles a single-word name" time="0">
+    </testcase>
+    <testcase classname="rankLabel returns 1st for rank 1" name="rankLabel returns 1st for rank 1" time="0">
+    </testcase>
+    <testcase classname="rankLabel returns 2nd for rank 2" name="rankLabel returns 2nd for rank 2" time="0">
+    </testcase>
+    <testcase classname="rankLabel returns 4th for rank 4" name="rankLabel returns 4th for rank 4" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="getPromptForFormat" errors="0" failures="0" skipped="0" timestamp="2026-08-27T02:53:08" time="0.034" tests="34">
+    <testcase classname="getPromptForFormat returns a non-empty string for format=nested location=mexico" name="getPromptForFormat returns a non-empty string for format=nested location=mexico" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=nested location=latinAmerica" name="getPromptForFormat returns a non-empty string for format=nested location=latinAmerica" time="0.001">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=nested location=world" name="getPromptForFormat returns a non-empty string for format=nested location=world" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=nested location=northAmerica" name="getPromptForFormat returns a non-empty string for format=nested location=northAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=json location=mexico" name="getPromptForFormat returns a non-empty string for format=json location=mexico" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=json location=latinAmerica" name="getPromptForFormat returns a non-empty string for format=json location=latinAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=json location=world" name="getPromptForFormat returns a non-empty string for format=json location=world" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=json location=northAmerica" name="getPromptForFormat returns a non-empty string for format=json location=northAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=yaml location=mexico" name="getPromptForFormat returns a non-empty string for format=yaml location=mexico" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=yaml location=latinAmerica" name="getPromptForFormat returns a non-empty string for format=yaml location=latinAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=yaml location=world" name="getPromptForFormat returns a non-empty string for format=yaml location=world" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=yaml location=northAmerica" name="getPromptForFormat returns a non-empty string for format=yaml location=northAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=markdown location=mexico" name="getPromptForFormat returns a non-empty string for format=markdown location=mexico" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=markdown location=latinAmerica" name="getPromptForFormat returns a non-empty string for format=markdown location=latinAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=markdown location=world" name="getPromptForFormat returns a non-empty string for format=markdown location=world" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat returns a non-empty string for format=markdown location=northAmerica" name="getPromptForFormat returns a non-empty string for format=markdown location=northAmerica" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes &quot;Mexico&quot; for mexico location" name="getPromptForFormat includes &quot;Mexico&quot; for mexico location" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes &quot;Latam&quot; or &quot;Latin&quot; for latinAmerica location" name="getPromptForFormat includes &quot;Latam&quot; or &quot;Latin&quot; for latinAmerica location" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes &quot;world&quot; for world location" name="getPromptForFormat includes &quot;world&quot; for world location" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes JSON structure markers for json format" name="getPromptForFormat includes JSON structure markers for json format" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes YAML list marker for yaml format" name="getPromptForFormat includes YAML list marker for yaml format" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes nested text list marker for nested format" name="getPromptForFormat includes nested text list marker for nested format" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat produces different output for json vs yaml" name="getPromptForFormat produces different output for json vs yaml" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat produces different output for mexico vs world" name="getPromptForFormat produces different output for mexico vs world" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes &quot;North America&quot; for northAmerica location" name="getPromptForFormat includes &quot;North America&quot; for northAmerica location" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat produces different output for northAmerica vs world" name="getPromptForFormat produces different output for northAmerica vs world" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat includes markdown table header for markdown format" name="getPromptForFormat includes markdown table header for markdown format" time="0">
+    </testcase>
+    <testcase classname="getPromptForFormat produces different output for markdown vs json" name="getPromptForFormat produces different output for markdown vs json" time="0">
+    </testcase>
+    <testcase classname="system_prompt contains the fallback refusal message for off-topic prompts" name="system_prompt contains the fallback refusal message for off-topic prompts" time="0">
+    </testcase>
+    <testcase classname="system_prompt instructs output inside &lt;answer&gt; tag" name="system_prompt instructs output inside &lt;answer&gt; tag" time="0">
+    </testcase>
+    <testcase classname="system_prompt instructs reasoning inside &lt;thinking&gt; tag" name="system_prompt instructs reasoning inside &lt;thinking&gt; tag" time="0">
+    </testcase>
+    <testcase classname="system_prompt embeds the JSON format example directly (no unfilled placeholders)" name="system_prompt embeds the JSON format example directly (no unfilled placeholders)" time="0.001">
+    </testcase>
+    <testcase classname="system_prompt instructs altitude as plain numbers" name="system_prompt instructs altitude as plain numbers" time="0">
+    </testcase>
+    <testcase classname="system_prompt instructs location as state only" name="system_prompt instructs location as state only" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>

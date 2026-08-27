@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="109" failures="0" errors="0" time="1.099">
+    <testsuite name="App – initial render" errors="0" failures="0" skipped="0" timestamp="2026-08-27T03:08:47" time="0.718" tests="27">
+        <testcase classname="src/App.test.tsx" name="App – initial render renders the Claude Chat heading" time="0.014">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – initial render shows Prompt and Evals nav buttons" time="0.028">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – initial render shows Preset Options and Custom Prompt mode buttons" time="0.014">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – view switching clicking Evals nav renders the evals view" time="0.021">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – view switching clicking Prompt nav restores the main view" time="0.022">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode submit button is disabled when no format is selected" time="0.007">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode submit button is enabled after selecting JSON format" time="0.022">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode submit button is enabled after selecting YAML format" time="0.014">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode submit button is enabled after selecting Nested Text format" time="0.013">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode renders all three location buttons" time="0.017">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode renders all four format buttons" time="0.021">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – preset mode submit button is enabled after selecting Markdown format" time="0.013">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – custom prompt mode switching to custom mode shows the prompt textarea" time="0.006">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – custom prompt mode submit button is disabled when custom prompt is empty" time="0.01">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – custom prompt mode submit button is enabled when custom prompt has text" time="0.011">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – custom prompt mode submit button disabled again when custom prompt is cleared" time="0.01">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – download button download button is disabled when there is no output" time="0.006">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – clear output button clear button is present in the main view" time="0.006">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – clear output button clear button is disabled when there is no output" time="0.006">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – location selection Mexico button is not active by default" time="0.006">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – location selection clicking Mexico makes it the active location" time="0.007">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – location selection clicking Latin America button selects it" time="0.006">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – location selection selecting a location enables the submit button when a format is also selected" time="0.017">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – location selection only one location button is active at a time" time="0.022">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – format selection only one format button is active at a time" time="0.022">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – format selection clicking Markdown sets it active" time="0.012">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/App.test.tsx" name="App – format selection clicking Nested Text sets it active" time="0.011">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/App.test.tsx"/>
+            </properties>
+        </testcase>
+    </testsuite>
+    <testsuite name="extractTag" errors="0" failures="0" skipped="0" timestamp="2026-08-27T03:08:47" time="0.14" tests="38">
+        <testcase classname="src/EvalsView.test.tsx" name="extractTag extracts content from a matching tag" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="extractTag trims whitespace from extracted content" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="extractTag returns empty string when tag is absent" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="extractTag handles multi-line content inside tag" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="extractTag extracts thinking tag independently of answer tag" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="extractTag returns empty string for empty tag content" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer lowercases text" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer strips triple-backtick code fences" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer strips inline backticks" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer trims surrounding whitespace" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer returns empty string for empty input" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion returns true when answer tag matches golden answer exactly" time="0.001">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion returns false when answer tag does not match" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion ignores surrounding whitespace in comparison" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion falls back to raw output when no answer tag is present" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion matches case-insensitively when answer tag differs in case" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion matches case-insensitively for raw output fallback" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion still returns false for a genuine mismatch regardless of case" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion passes when answer tag contains code-fenced output matching golden answer" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion passes when raw output with backtick formatting matches golden answer" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="eval_data contains at least one mountain_related item" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="eval_data contains at least one non_related item" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="eval_data every item has a non-empty prompt" time="0.001">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="eval_data every item has a valid label" time="0.002">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="eval_data non_related items have a golden_answer refusal message" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="EvalsView component renders the eval count" time="0.009">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="EvalsView component renders Run All Evals button" time="0.014">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="EvalsView component Run All Evals button is enabled before running" time="0.008">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="EvalsView component renders a row for each eval item" time="0.02">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="EvalsView component shows a table with expected column headers" time="0.015">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="EvalsView component displays prompt text for each eval item in the table" time="0.009">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer – edge cases handles code fence without a language tag" time="0.001">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer – edge cases preserves internal content after stripping fences" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="normalizeAnswer – edge cases is idempotent — normalizing twice gives the same result" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion – additional cases handles golden answer with leading/trailing whitespace" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion – additional cases returns false when output is empty" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion – additional cases returns false when golden answer is empty but output is not" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/EvalsView.test.tsx" name="gradeCompletion – additional cases returns true when both output and golden answer are empty" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/EvalsView.test.tsx"/>
+            </properties>
+        </testcase>
+    </testsuite>
+    <testsuite name="getPromptForFormat" errors="0" failures="0" skipped="0" timestamp="2026-08-27T03:08:47" time="0.046" tests="34">
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=nested location=mexico" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=nested location=latinAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=nested location=world" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=nested location=northAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=json location=mexico" time="0.001">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=json location=latinAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=json location=world" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=json location=northAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=yaml location=mexico" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=yaml location=latinAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=yaml location=world" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=yaml location=northAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=markdown location=mexico" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=markdown location=latinAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=markdown location=world" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat returns a non-empty string for format=markdown location=northAmerica" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes &#34;Mexico&#34; for mexico location" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes &#34;Latam&#34; or &#34;Latin&#34; for latinAmerica location" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes &#34;world&#34; for world location" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes JSON structure markers for json format" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes YAML list marker for yaml format" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes nested text list marker for nested format" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat produces different output for json vs yaml" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat produces different output for mexico vs world" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes &#34;North America&#34; for northAmerica location" time="0.002">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat produces different output for northAmerica vs world" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat includes markdown table header for markdown format" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="getPromptForFormat produces different output for markdown vs json" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="system_prompt contains the fallback refusal message for off-topic prompts" time="0.001">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="system_prompt instructs output inside &lt;answer&gt; tag" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="system_prompt instructs reasoning inside &lt;thinking&gt; tag" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="system_prompt embeds the JSON format example directly (no unfilled placeholders)" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="system_prompt instructs altitude as plain numbers" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/prompts/main.test.ts" name="system_prompt instructs location as state only" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/prompts/main.test.ts"/>
+            </properties>
+        </testcase>
+    </testsuite>
+    <testsuite name="formatElevation" errors="0" failures="0" skipped="0" timestamp="2026-08-27T03:08:47" time="0.047" tests="10">
+        <testcase classname="src/peakUtils.test.ts" name="formatElevation formats a round number with the m suffix" time="0.007">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="formatElevation formats a four-digit elevation without thousands separator gap" time="0.001">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="formatElevation formats zero elevation" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="formatPeakName title-cases a lowercase name" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="formatPeakName lowercases an all-caps name then title-cases it" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="formatPeakName trims leading and trailing whitespace" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="formatPeakName handles a single-word name" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="rankLabel returns 1st for rank 1" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="rankLabel returns 2nd for rank 2" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+        <testcase classname="src/peakUtils.test.ts" name="rankLabel returns 4th for rank 4" time="0">
+            <properties>
+                <property name="com.circleci.test-atom" value="src/peakUtils.test.ts"/>
+            </properties>
+        </testcase>
+    </testsuite>
+</testsuites>
