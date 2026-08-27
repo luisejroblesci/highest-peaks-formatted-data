@@ -18,7 +18,7 @@ jobs:
           key: v1-deps-{{ checksum "package-lock.json" }}
       - run:
           name: Run tests
-          command: circleci-testsuite exec --suite "ci tests"
+          command: circleci testsuite run "ci tests"
 
 workflows:
   test-workflow:
