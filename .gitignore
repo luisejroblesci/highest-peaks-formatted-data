@@ -7,6 +7,11 @@
 
 # testing
 /coverage
+/test-reports
+
+# circleci local state (impact data, sidecar state)
+.circleci/impact-*.json
+.circleci/state-*.json
 
 # production
 /build

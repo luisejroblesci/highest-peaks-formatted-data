@@ -1,0 +1,15 @@
+name: ci tests
+discover: CI=true npx react-scripts test --listTests --watchAll=false
+run: JEST_JUNIT_OUTPUT_FILE="<< outputs.junit >>" JEST_JUNIT_ADD_FILE_ATTRIBUTE="true" CI=true npx react-scripts test --runInBand << test.atoms >> --reporters=jest-junit
+analysis: |
+  lcov_dir=$(dirname "<< outputs.lcov >>")
+  CI=true npx react-scripts test --runInBand --silent --bail \
+    --coverage --coverageReporters=lcov \
+    --coverageDirectory="$lcov_dir" \
+    << test.atoms >>
+outputs:
+  junit: test-reports/results.xml
+  lcov: coverage/lcov.info
+options:
+  test-impact-analysis: true
+  store-test-results: true
