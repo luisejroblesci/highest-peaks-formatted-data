@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  smarter-testing: circleci/smarter-testing@1
+
 jobs:
   test:
     docker:
@@ -16,9 +19,8 @@ jobs:
           paths:
             - node_modules
           key: v1-deps-{{ checksum "package-lock.json" }}
-      - run:
-          name: Run tests
-          command: CI=true npm test -- --watchAll=false
+      - smarter-testing/run:
+          suite: ci tests
 
 workflows:
   test-workflow:

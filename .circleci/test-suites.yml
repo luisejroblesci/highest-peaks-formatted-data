@@ -1,0 +1,3 @@
+name: ci tests
+discover: npx jest --listTests
+run: JEST_JUNIT_OUTPUT_FILE="<< outputs.junit >>" npx react-scripts test --runInBand --reporters=default --reporters=jest-junit --bail --watchAll=false << test.atoms >>
