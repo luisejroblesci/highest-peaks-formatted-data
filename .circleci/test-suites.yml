@@ -1,11 +1,12 @@
 name: ci tests
 discover: npx jest --listTests
-run: mkdir -p test-reports && JEST_JUNIT_OUTPUT_FILE="<< outputs.junit >>" JEST_JUNIT_CLASSNAME="{filepath}" npx react-scripts test --runInBand --reporters=default --reporters=jest-junit --bail --watchAll=false << test.atoms >>
+run: |
+  mkdir -p test-reports
+  JEST_JUNIT_OUTPUT_FILE="<< outputs.junit >>" JEST_JUNIT_CLASSNAME="{filepath}" \
+  npx jest --reporters=default --reporters=jest-junit --bail << test.atoms >>
 analysis: |
-  npx react-scripts test \
-    --runInBand --silent --bail --coverage --coverageReporters=lcov \
-    --watchAll=false << test.atoms >> && \
-  cp coverage/lcov.info << outputs.lcov >>
+  CIRCLECI_COVERAGE="<< outputs.circleci-coverage >>" npx jest \
+    --runInBand --silent --bail << test.atoms >>
 outputs:
   junit: test-reports/junit.xml
 options:
