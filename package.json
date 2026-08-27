@@ -44,7 +44,4 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "jest-junit": "^17.0.0"
-  }
 }

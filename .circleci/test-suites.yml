@@ -1,7 +1,0 @@
-name: ci tests
-discover: CI=true npx react-scripts test --watchAll=false --listTests
-run: JEST_JUNIT_OUTPUT_FILE="<< outputs.junit >>" JEST_JUNIT_CLASSNAME="{filepath}" CI=true npx react-scripts test --watchAll=false --runInBand --testPathPattern="$(echo << test.atoms >> | tr ' ' '|')" --reporters=jest-junit
-analysis: CI=true npx react-scripts test --watchAll=false --runInBand --coverage --coverageReporters=lcov --coverageDirectory="$(dirname << outputs.lcov >>)" --testPathPattern="$(echo << test.atoms >> | tr ' ' '|')" && mv "$(dirname << outputs.lcov >>)/lcov.info" "<< outputs.lcov >>"
-options:
-  test-impact-analysis: true
-  max-auto-rerun: 2
