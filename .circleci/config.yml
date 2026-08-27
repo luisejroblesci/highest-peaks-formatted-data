@@ -19,6 +19,8 @@ jobs:
       - run:
           name: Run tests
           command: circleci testsuite run "ci tests"
+      - store_test_results:
+          path: test-reports
 
 workflows:
   test-workflow:
