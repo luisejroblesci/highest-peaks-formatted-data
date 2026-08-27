@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Anthropic from '@anthropic-ai/sdk';
 
-export const EVALS_VERSION = '1.0.0';
+export const EVALS_VERSION = '1.1.0';
 import { eval_data, type EvalItem } from './prompts/evals_test';
 import { system_prompt } from './prompts/main';
 
