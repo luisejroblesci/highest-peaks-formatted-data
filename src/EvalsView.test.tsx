@@ -162,4 +162,50 @@ describe('EvalsView component', () => {
     // +1 for the header row
     expect(rows.length).toBe(eval_data.length + 1);
   });
+
+  it('shows a table with expected column headers', () => {
+    render(<EvalsView />);
+    expect(screen.getByRole('columnheader', { name: /prompt/i })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /label/i })).toBeInTheDocument();
+  });
+
+  it('displays prompt text for each eval item in the table', () => {
+    render(<EvalsView />);
+    eval_data.slice(0, 3).forEach((item) => {
+      expect(screen.getByText(item.prompt)).toBeInTheDocument();
+    });
+  });
+});
+
+describe('normalizeAnswer – edge cases', () => {
+  it('handles code fence without a language tag', () => {
+    expect(normalizeAnswer('```\nhello\n```')).toBe('hello');
+  });
+
+  it('preserves internal content after stripping fences', () => {
+    expect(normalizeAnswer('```yaml\nkey: value\n```')).toBe('key: value');
+  });
+
+  it('is idempotent — normalizing twice gives the same result', () => {
+    const input = '```JSON\nSome Value\n```';
+    expect(normalizeAnswer(normalizeAnswer(input))).toBe(normalizeAnswer(input));
+  });
+});
+
+describe('gradeCompletion – additional cases', () => {
+  it('handles golden answer with leading/trailing whitespace', () => {
+    expect(gradeCompletion('<answer>correct</answer>', '  correct  ')).toBe(true);
+  });
+
+  it('returns false when output is empty', () => {
+    expect(gradeCompletion('', 'correct')).toBe(false);
+  });
+
+  it('returns false when golden answer is empty but output is not', () => {
+    expect(gradeCompletion('<answer>something</answer>', '')).toBe(false);
+  });
+
+  it('returns true when both output and golden answer are empty', () => {
+    expect(gradeCompletion('', '')).toBe(true);
+  });
 });

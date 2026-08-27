@@ -143,3 +143,62 @@ describe('App – clear output button', () => {
     expect(screen.getByRole('button', { name: /clear output/i })).toBeDisabled();
   });
 });
+
+describe('App – location selection', () => {
+  test('Mexico button is not active by default', () => {
+    render(<App />);
+    const btn = screen.getByRole('button', { name: /^mexico$/i });
+    expect(btn.className).not.toMatch(/active/i);
+  });
+
+  test('clicking Mexico makes it the active location', () => {
+    render(<App />);
+    const btn = screen.getByRole('button', { name: /^mexico$/i });
+    fireEvent.click(btn);
+    expect(btn.className).toMatch(/active/i);
+  });
+
+  test('clicking Latin America button selects it', () => {
+    render(<App />);
+    const btn = screen.getByRole('button', { name: /latin america/i });
+    fireEvent.click(btn);
+    expect(btn.className).toMatch(/active/i);
+  });
+
+  test('selecting a location enables the submit button when a format is also selected', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /^mexico$/i }));
+    fireEvent.click(screen.getByRole('button', { name: /^json$/i }));
+    expect(screen.getByRole('button', { name: /get response/i })).not.toBeDisabled();
+  });
+
+  test('only one location button is active at a time', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /^mexico$/i }));
+    fireEvent.click(screen.getByRole('button', { name: /^world$/i }));
+    expect(screen.getByRole('button', { name: /^mexico$/i }).className).not.toMatch(/active/i);
+    expect(screen.getByRole('button', { name: /^world$/i }).className).toMatch(/active/i);
+  });
+});
+
+describe('App – format selection', () => {
+  test('only one format button is active at a time', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /^json$/i }));
+    fireEvent.click(screen.getByRole('button', { name: /^yaml$/i }));
+    expect(screen.getByRole('button', { name: /^json$/i }).className).not.toMatch(/active/i);
+    expect(screen.getByRole('button', { name: /^yaml$/i }).className).toMatch(/active/i);
+  });
+
+  test('clicking Markdown sets it active', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /^markdown$/i }));
+    expect(screen.getByRole('button', { name: /^markdown$/i }).className).toMatch(/active/i);
+  });
+
+  test('clicking Nested Text sets it active', () => {
+    render(<App />);
+    fireEvent.click(screen.getByRole('button', { name: /nested text data/i }));
+    expect(screen.getByRole('button', { name: /nested text data/i }).className).toMatch(/active/i);
+  });
+});
